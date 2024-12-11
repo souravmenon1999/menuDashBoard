@@ -13,7 +13,7 @@ export const createMenu = async (req, res) => {
   try {
     const { name, description } = req.body;
     const menu = await menuService.createMenu({ name, description });
-    res.status(201).json(menu);
+    res.status(201).json({ ...menu, items: [] });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

@@ -1,4 +1,8 @@
-import prisma from '../utils/db.js';
+
+
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
 
 const getItemsByMenu = async (menuId) => {
   return await prisma.item.findMany({
@@ -6,7 +10,7 @@ const getItemsByMenu = async (menuId) => {
   });
 };
 
-const createItem = async (data) => {
+export const createItem = async (data) => {
   return await prisma.item.create({
     data,
   });
